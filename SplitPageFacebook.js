@@ -28,30 +28,35 @@ FacebookListSplitWrapper.prototype.setTargetURLs = function(){
 
 FacebookListSplitWrapper.prototype.initialize = function (language) {
 
-   /* if(document.body.className =="hasLeftCol home composerExpanded fbx gecko win Locale_es_ES")
+    /*var body = document.evaluate("//*[@id='facebook']/body", document, null, XPathResult.ANY_TYPE, null).iterateNext();
+    if (body != null && body.getAttribute("class") ==
+    "hasLeftCol home composerExpanded fbx gecko win Locale_es_ES")*/
+
+    /* if(document.body.className =="hasLeftCol home composerExpanded fbx gecko win Locale_es_ES")
     {
     */
-        var refactoring = new SplitPage.SplitPage("Facebook page");
+    var refactoring = new SplitPage.SplitPage("Facebook page");
 
-        var main = new SplitPage.SplitedSection(this.languages[language]["main"], refactoring);
-        main.addElement(".//*[@id='contentCol']");
-
-
-        var menu = new SplitPage.SplitedSection(this.languages[language]["menu"], refactoring);
-        menu.addElement(".//*[@id='leftCol']");
-
-        var tools = new SplitPage.SplitedSection(this.languages[language]["toolbar"], refactoring);
-        tools.addElement(".//*[@id='pagelet_bluebar']");
+    var main = new SplitPage.SplitedSection(this.languages[language]["main"], refactoring);
+    main.addElement(".//*[@id='contentCol']");
 
 
-        refactoring.addSplitedSection(main);
-        refactoring.addSplitedSection(menu);
-        refactoring.addSplitedSection(tools);
+    //document.evaluate("//*[@id='blueBar']", document, null, XPathResult.ANY_TYPE, null).iterateNext().setAttribute("style", "position:absolute !important")
+    var menu = new SplitPage.SplitedSection(this.languages[language]["menu"], refactoring);
+    menu.addElement(".//*[@id='leftCol']");
 
-        refactoring.setAsFirstSplitedSection();
+    var tools = new SplitPage.SplitedSection(this.languages[language]["toolbar"], refactoring);
+    tools.addElement(".//*[@id='pagelet_bluebar']");
 
-        refactoring.setAsMain(main);
-        this.abstract_refactoring = refactoring;
+
+    refactoring.addSplitedSection(main);
+    refactoring.addSplitedSection(menu);
+    refactoring.addSplitedSection(tools);
+
+    refactoring.setAsFirstSplitedSection();
+
+    refactoring.setAsMain(main);
+    this.abstract_refactoring = refactoring;
     /*}*/
 };
 
