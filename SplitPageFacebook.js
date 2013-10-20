@@ -14,10 +14,7 @@ function FacebookListSplitWrapper(){
 	this.languages["es"]["main"] = "Principal";
 	this.languages["es"]["menu"] = "Menu izquierdo";
 	this.languages["es"]["toolbar"] = "Herramientas";
-
-    this.languages["en"]["main"] = "Wall";
-    this.languages["en"]["menu"] = "Left menu";
-    this.languages["es"]["toolbar"] = "Tools";
+	this.languages["es"]["recomendaciones"] = "Cumpleaños y recomendaciones";//cumpleaños y recomendaciones
 };
 
 FacebookListSplitWrapper.prototype = new AbstractInstanceRefactoring();
@@ -38,7 +35,7 @@ FacebookListSplitWrapper.prototype.initialize = function (language) {
     var refactoring = new SplitPage.SplitPage("Facebook page");
 
     var main = new SplitPage.SplitedSection(this.languages[language]["main"], refactoring);
-    main.addElement(".//*[@id='contentCol']");
+    main.addElement(".//*[@id='contentArea']");
 
 
     //document.evaluate("//*[@id='blueBar']", document, null, XPathResult.ANY_TYPE, null).iterateNext().setAttribute("style", "position:absolute !important")
@@ -48,10 +45,14 @@ FacebookListSplitWrapper.prototype.initialize = function (language) {
     var tools = new SplitPage.SplitedSection(this.languages[language]["toolbar"], refactoring);
     tools.addElement(".//*[@id='pagelet_bluebar']");
 
+    var recomendacion = new SplitPage.SplitedSection(this.languages[language]["recomendaciones"], refactoring);
+    recomendacion.addElement(".//*[@id='rightCol']");
+
 
     refactoring.addSplitedSection(main);
     refactoring.addSplitedSection(menu);
     refactoring.addSplitedSection(tools);
+    refactoring.addSplitedSection(recomendacion);
 
     refactoring.setAsFirstSplitedSection();
 
