@@ -24,7 +24,6 @@ FacebookAddDescriptionRegister.prototype.initialize = function (language) {
     this.abstract_refactoring.addLabels(".//*[@id='u_0_1']", "Apellido");
     this.abstract_refactoring.addLabels(".//*[@id='u_0_2']", "E-Mail");
     this.abstract_refactoring.addLabels(".//*[@id='u_0_3']", "Repita su E-Mail");
-    this.abstract_refactoring.addLabels(".//*[@id='u_0_4']", "Contraseña");
-
+    this.abstract_refactoring.addLabels(".//*[@id='u_0_4']", "ContraseÃ±a");
     
 };
