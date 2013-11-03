@@ -23,15 +23,19 @@ FacebookListSplitWrapper.prototype.setTargetURLs = function(){
     this.addTargetURL(/https:\/\/www.facebook.com\//);
 };
 
+
+//override
+FacebookListSplitWrapper.prototype.adaptDocument = function (doc) {
+    if (doc.body.getAttribute("class") == "hasLeftCol home composerExpanded fbx gecko win Locale_es_ES") {
+        //esta en el muro de alguien logueado
+        this.abstract_refactoring.adaptDocument(doc);
+    }
+};
+
+
+
 FacebookListSplitWrapper.prototype.initialize = function (language) {
 
-    /*var body = document.evaluate("//*[@id='facebook']/body", document, null, XPathResult.ANY_TYPE, null).iterateNext();
-    if (body != null && body.getAttribute("class") ==
-    "hasLeftCol home composerExpanded fbx gecko win Locale_es_ES")*/
-
-    /* if(document.body.className =="hasLeftCol home composerExpanded fbx gecko win Locale_es_ES")
-    {
-    */
     var refactoring = new SplitPage.SplitPage("Facebook page");
 
     var main = new SplitPage.SplitedSection(this.languages[language]["main"], refactoring);
@@ -58,7 +62,7 @@ FacebookListSplitWrapper.prototype.initialize = function (language) {
 
     refactoring.setAsMain(main);
     this.abstract_refactoring = refactoring;
-    /*}*/
+
 };
 
 FacebookListSplitWrapper.prototype.initRefactoringForPageLoaded = function(doc,language){

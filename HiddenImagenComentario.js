@@ -20,6 +20,19 @@ HiddenImagenComentario.prototype.setTargetURLs = function(){
     this.addTargetURL(/https:\/\/www.facebook.com\//);
 };
 
+
+
+//override
+HiddenImagenComentario.prototype.adaptDocument = function (doc) {
+    if (doc.body.getAttribute("class") == "hasLeftCol home composerExpanded fbx gecko win Locale_es_ES") {
+        //esta en el muro de alguien logueado
+        this.abstract_refactoring.adaptDocument(doc);
+    }
+};
+
+
+
+
 HiddenImagenComentario.prototype.initialize = function (language) {
     this.abstract_refactoring = new HiddenRedundantOperationRefactoring.HiddenRedundantOperationRefactoring("Facebook page");
     //IMG

@@ -19,8 +19,8 @@ RemoveStyleCss.prototype.adaptDocument = function(doc){
 //xpath sobre el que se aplica el refactory
 //estilo expecifica el estilo que se removera
 RemoveStyleCss.prototype.addEstilo = function (xpath, estilo) {
-    this.elements_for_removing[xpath] = xpath;
-    this.estiloPorElemento[xpath] = estilo;
+    this.elements_for_removing.push(xpath);
+    this.estiloPorElemento.push(xpath);
 };
 
 RemoveStyleCss.prototype.removeElements = function (doc) {
