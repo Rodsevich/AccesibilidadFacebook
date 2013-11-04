@@ -1,7 +1,7 @@
 orden de los refactoring para que anden en el home
 nombres refactorin -> archivos js
 
-splitPage for facebook   -> SplitPageForFacebook
+splitPage for facebook   -> SplitPageFacebook
 hidden image for facebook   ->   HiddenImageComentario
 cambiar los H5 del comentario   ->   ChangeComentarioH5Facebook
 quita la propiedad fixed de la barra de herramientas   ->   SplitPageFacebook
