@@ -11,8 +11,7 @@ function FacebookRegisterListSplitWrapper(){
 	this.languages = {"es":{},"en":{}};
 	this.languages["es"]["login"] = "Identificarse";
 	this.languages["es"]["registering"] = "Registrarse";
-
-    this.languages["en"]["login"] = "Login";
+        this.languages["en"]["login"] = "Login";
 	this.languages["en"]["registering"] = "Registering";
 };
 
@@ -45,4 +44,12 @@ FacebookRegisterListSplitWrapper.prototype.initialize = function (language) {
 
 FacebookRegisterListSplitWrapper.prototype.initRefactoringForPageLoaded = function(doc,language){
 	
+};
+
+//override
+FacebookRegisterListSplitWrapper.prototype.adaptDocument = function (doc) {
+    if (doc.body.getAttribute("class").indexOf("fbIndex UIPage_LoggedOut") > -1) {
+        //esta en la página de logueo/registro
+        this.abstract_refactoring.adaptDocument(doc);
+    }
 };

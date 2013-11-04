@@ -7,14 +7,12 @@ function getAccessibilityAugmenter(){
     return new FacebookListSplitWrapper();
 };
 
-
-
 function FacebookListSplitWrapper(){
 	this.languages = {"es":{},"en":{}};
 	this.languages["es"]["main"] = "Principal";
 	this.languages["es"]["menu"] = "Menu izquierdo";
 	this.languages["es"]["toolbar"] = "Herramientas";
-	this.languages["es"]["recomendaciones"] = "Cumpleaños y recomendaciones";//cumpleaños y recomendaciones
+	this.languages["es"]["recomendaciones"] = "CumpleaÃ±os y recomendaciones";
 };
 
 FacebookListSplitWrapper.prototype = new AbstractInstanceRefactoring();
@@ -22,17 +20,6 @@ FacebookListSplitWrapper.prototype = new AbstractInstanceRefactoring();
 FacebookListSplitWrapper.prototype.setTargetURLs = function(){
     this.addTargetURL(/https:\/\/www.facebook.com\//);
 };
-
-
-//override
-FacebookListSplitWrapper.prototype.adaptDocument = function (doc) {
-    if (doc.body.getAttribute("class") == "hasLeftCol home composerExpanded fbx gecko win Locale_es_ES") {
-        //esta en el muro de alguien logueado
-        this.abstract_refactoring.adaptDocument(doc);
-    }
-};
-
-
 
 FacebookListSplitWrapper.prototype.initialize = function (language) {
 
@@ -67,4 +54,12 @@ FacebookListSplitWrapper.prototype.initialize = function (language) {
 
 FacebookListSplitWrapper.prototype.initRefactoringForPageLoaded = function(doc,language){
 	
+};
+
+//override
+FacebookListSplitWrapper.prototype.adaptDocument = function (doc) {
+    if (doc.body.getAttribute("class").indexOf("home") > -1) {
+        //esta en el muro de alguien logueado
+        this.abstract_refactoring.adaptDocument(doc);
+    }
 };
