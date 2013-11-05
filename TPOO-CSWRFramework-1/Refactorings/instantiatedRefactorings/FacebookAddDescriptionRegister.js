@@ -27,3 +27,10 @@ FacebookAddDescriptionRegister.prototype.initialize = function (language) {
     this.abstract_refactoring.addLabels(".//*[@id='u_0_4']", "Contraseña");
     
 };
+
+FacebookAddDescriptionRegister.prototype.adaptDocument = function (doc) {
+    if (doc.body.getAttribute("class").indexOf("fbIndex UIPage_LoggedOut") > -1) {
+        //esta en la página de logueo/registro
+        this.abstract_refactoring.adaptDocument(doc);
+    }
+};
