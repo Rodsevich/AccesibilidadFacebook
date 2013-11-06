@@ -20,7 +20,7 @@ FacebookHiddenComentarios.prototype.setTargetURLs = function () {
 
 //override
 FacebookHiddenComentarios.prototype.adaptDocument = function (doc) {
-    if (doc.body.getAttribute("class") == "hasLeftCol home composerExpanded fbx gecko win Locale_es_ES") {
+    if (doc.body.getAttribute("class").indexOf("home") > -1) {
         //esta en el muro de alguien logueado
         this.abstract_refactoring.adaptDocument(doc);
     }

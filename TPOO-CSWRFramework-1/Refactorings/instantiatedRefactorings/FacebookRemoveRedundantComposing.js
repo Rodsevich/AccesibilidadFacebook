@@ -1,4 +1,4 @@
-var metadata = {"author":"Sergio Firmenich", "name":"Remove Redundant for Gmail's Compose", "description":"This refactoring removes the first occurrences of the operations send, save and discard","id":"removeRedundant-mainGmail-sfirmenich"};
+var metadata = {"author":"Sergio Firmenich", "name":"Remove Redundant for Feisbuc's Compose", "description":"This refactoring removes the first occurrences of the operations send, save and discard","id":"removeRedundant-mainFeis-sfirmenich"};
 
 function getAccessibilityAugmenter(){
 	return new FacebookRemoveRedundantOperations();
