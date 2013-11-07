@@ -23,7 +23,6 @@ observerTeclado.prototype.adaptDocument = function (doc) {
     
     function levantoTecla(evtKeyDown){
         this.teclasApretadas.splice(this.teclasApretadas.indexOf(evtKeyDown.keyCode), 1);
-        alert("solto");//prueba para ver si funca
     }
     
     function dispararEvento(){
@@ -43,7 +42,6 @@ observerTeclado.prototype.adaptDocument = function (doc) {
     document = doc;
     document.body.addEventListener("keydown", tocoTecla);
     document.body.addEventListener("keyup", levantoTecla);
-        
 };
 
 observerTeclado.prototype.addCombo = function(keyCombo,callback) {
