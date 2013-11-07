@@ -14,7 +14,7 @@ function FacebookHiddenComentarios() {
 FacebookHiddenComentarios.prototype = new AbstractInstanceRefactoring();
 
 FacebookHiddenComentarios.prototype.setTargetURLs = function () {
-    this.addTargetURL(/https:\/\/www.facebook.com\//);
+    this.addTargetURL(/https:\/\/www.facebook.com\/$/);//El $ indica fin de expresion, para q no se use al mostrar el comentario
 };
 
 
@@ -30,5 +30,5 @@ FacebookHiddenComentarios.prototype.adaptDocument = function (doc) {
 
 FacebookHiddenComentarios.prototype.initialize = function (language) {
     this.abstract_refactoring = new HiddenRedundantOperationRefactoring.HiddenRedundantOperationRefactoring("Facebook page");
-    this.abstract_refactoring.addClassAborrar(".uiUfi.UFIContainer");
+    this.abstract_refactoring.addClassAborrar(".UFIList");
 };

@@ -18,6 +18,17 @@ FacebookAddDescriptionRegister.prototype.setTargetURLs = function () {
     this.addTargetURL(/https:\/\/www.facebook.com\//);
 };
 
+
+
+//override
+FacebookAddDescriptionRegister.prototype.adaptDocument = function (doc) {
+    if (doc.body.getAttribute("class").indexOf("fbIndex UIPage_LoggedOut") > -1) {
+        //esta en la página de logueo/registro
+        this.abstract_refactoring.adaptDocument(doc);
+    }
+};
+
+
 FacebookAddDescriptionRegister.prototype.initialize = function (language) {
     this.abstract_refactoring = new AddDescription.AddDescription("Facebook register page");
     this.abstract_refactoring.addLabels(".//*[@id='u_0_0']", "Nombre");
@@ -26,11 +37,4 @@ FacebookAddDescriptionRegister.prototype.initialize = function (language) {
     this.abstract_refactoring.addLabels(".//*[@id='u_0_3']", "Repita su E-Mail");
     this.abstract_refactoring.addLabels(".//*[@id='u_0_4']", "Contraseña");
     
-};
-
-FacebookAddDescriptionRegister.prototype.adaptDocument = function (doc) {
-    if (doc.body.getAttribute("class").indexOf("fbIndex UIPage_LoggedOut") > -1) {
-        //esta en la página de logueo/registro
-        this.abstract_refactoring.adaptDocument(doc);
-    }
 };
