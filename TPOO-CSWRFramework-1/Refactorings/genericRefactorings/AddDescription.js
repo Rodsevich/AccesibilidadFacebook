@@ -31,7 +31,7 @@ AddDescription.prototype.addElements = function (doc) {
         var element = dom_target_elements.iterateNext();
         while (element) {
             /*
-            El label se inserta como hermano izquierdo del elemento en cuestion.
+            El label se inserta como hermano izquierdo del elemento en cuestión.
             Para lo cual se necesita el padre para el insert before
             */
             var padre = element.parentNode;

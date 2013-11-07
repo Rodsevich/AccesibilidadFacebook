@@ -36,9 +36,6 @@ NavegacionFeisbuc.prototype.initRefactoringForPageLoaded = function(doc,language
 
 //override
 NavegacionFeisbuc.prototype.adaptDocument = function (doc) {
-    function funca(){ //funcion de prueba para ver si anda
-        alert("funca");
-    }
     if (doc.body.getAttribute("class").indexOf("home") > -1) {
         //esta en el muro de alguien logueado
         this.abstract_refactoring.adaptDocument(doc);
