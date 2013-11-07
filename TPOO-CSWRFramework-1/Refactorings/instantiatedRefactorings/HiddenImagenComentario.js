@@ -17,7 +17,7 @@ function HiddenImagenComentario(){
 HiddenImagenComentario.prototype = new AbstractInstanceRefactoring();
 
 HiddenImagenComentario.prototype.setTargetURLs = function(){
-    this.addTargetURL(/https:\/\/www.facebook.com\//);
+    this.addTargetURL(/https:\/\/www.facebook.com\/*/);
 };
 
 
