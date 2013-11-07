@@ -1,10 +1,12 @@
 var metadata = {"author":"Sergio Firmenich", "name":"Split Page", "description":"This generic refactoring splits a complex page into several smaller ones and add a menu for accessing each of these sections.","id":"splitpage-sfirmenich"};
 
 var instance = null;
+
 function SplitPage_loadSplitedSection(e){
 	var splited_section_name = e.target.id;
+	var key = instance.getNameForSaveSelectedSection();
 	if (splited_section_name == "undefined"){
-		RefactoringPersistenceManager.getInstance().setRefactoringInformation(instance,"selectedSection","undefined");
+		RefactoringPersistenceManager.getInstance().setRefactoringInformation(instance,key,"undefined");
 		return;
 	}
 	var splited_section = instance.getSplitedSectionByName(splited_section_name);
@@ -44,6 +46,15 @@ function SplitPage(name){
 
 SplitPage.prototype = new AbstractGenericRefactoring();
 
+SplitPage.prototype.getHomeSectionName = function(){
+	return "main_splited_home-" + this.name; 
+};
+
+SplitPage.prototype.getNameForSaveSelectedSection = function(){
+	instance = this;
+	return "selectedSection-" + this.name; 
+};
+
 SplitPage.prototype.setLanguage = function(language){
 	try{
 		this.language_current = this.languages[language];
@@ -54,6 +65,7 @@ SplitPage.prototype.setLanguage = function(language){
 	catch(e){;}
 };
 
+/*
 SplitPage.prototype.adaptDocument = function(doc){
 	this.refactoring_information = RefactoringPersistenceManager.getInstance().getRefactoringInformation(this);
 	if ((typeof(this.refactoring_information["selectedSection"]) == "undefined") || (this.refactoring_information["selectedSection"] == "undefined")){
@@ -74,6 +86,28 @@ SplitPage.prototype.adaptDocument = function(doc){
 		}
 	}
 	RefactoringPersistenceManager.getInstance().setRefactoringInformation(instance,"selectedSection","undefined");
+};*/
+
+SplitPage.prototype.adaptDocument = function(doc){
+	this.refactoring_information = RefactoringPersistenceManager.getInstance().getRefactoringInformation(this);
+	if ((typeof(this.refactoring_information[this.getNameForSaveSelectedSection()]) == "undefined") || (this.refactoring_information[this.getNameForSaveSelectedSection()] == "undefined")){		
+		if(this.mainSplitedSection != null){
+			this.mainSplitedSection.showSection(doc);
+			return;
+		};
+		this.renderMainSplitedPage(doc);	
+	}
+	else{
+		if(this.refactoring_information[this.getNameForSaveSelectedSection()] == this.getHomeSectionName()) {
+			RefactoringPersistenceManager.getInstance().setRefactoringInformation(this,this.getNameForSaveSelectedSection(),"undefined");
+			this.renderMainSplitedPage(doc);
+		}
+		else{
+			var splited_section = this.getSplitedSectionByName(this.refactoring_information[this.getNameForSaveSelectedSection()]);
+			splited_section.showSection(doc);
+		}
+	}
+	RefactoringPersistenceManager.getInstance().setRefactoringInformation(this,this.getNameForSaveSelectedSection(),"undefined");	
 };
 
 SplitPage.prototype.renderMainSplitedPage = function(doc){
@@ -157,7 +191,9 @@ SplitPage.prototype.getCurrentBasicURL = function(){
 SplitPage.prototype.getAnchor = function(doc){
 	var anchor = doc.createElement("a");
 	var onclick = 'event = document.createEvent("Event");event.initEvent("SplitedSectionSelected", true, false);this.dispatchEvent(event);';
-	anchor.setAttribute("id","main_splited_home");
+	
+	//anchor.setAttribute("id","main_splited_home");
+	anchor.setAttribute("id",this.getHomeSectionName());
 	anchor.setAttribute("onclick",onclick);
 	var href = "#";
 	//try{		
@@ -170,7 +206,8 @@ SplitPage.prototype.getAnchor = function(doc){
 
 SplitPage.prototype.renderAnchor = function(){
 	onclick = 'event = document.createEvent("Event");event.initEvent("SplitedSectionSelected", true, false);this.dispatchEvent(event);';
-	return " <a id='main_splited_home'href='javascript:void(0);' onclick='" + onclick + "'>Inicio</a> ";
+	//return " <a id='main_splited_home'href='javascript:void(0);' onclick='" + onclick + "'>Inicio</a> ";
+	return " <a id='"+ this.getHomeSectionName() +"' href='javascript:void(0);' onclick='" + onclick + "'>Inicio</a> ";	
 };
 
 SplitPage.prototype.addSplitedSection = function(aSplitedSection){
@@ -237,7 +274,7 @@ SplitedSection.prototype.addStaticLink = function(aStaticLink){
 
 
 SplitedSection.prototype.load = function(url){
-	RefactoringPersistenceManager.getInstance().setRefactoringInformation(this.accesible_app,"selectedSection",this.name);	
+	RefactoringPersistenceManager.getInstance().setRefactoringInformation(this.accesible_app,this.accesible_app.getNameForSaveSelectedSection(),this.name);	
 	this.accesible_app.load(url);
 };
 
