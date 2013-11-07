@@ -14,34 +14,32 @@ function observerTeclado(name) {
 
 observerTeclado.prototype = new AbstractGenericRefactoring();
 
-observerTeclado.prototype.adaptDocument = function (doc) {
-    
-    function tocoTecla(evtKeyDown){
-        this.teclasApretadas.push(evtKeyDown.keyCode);
-        dispararEvento();
-    }
-    
-    function levantoTecla(evtKeyDown){
-        this.teclasApretadas.splice(this.teclasApretadas.indexOf(evtKeyDown.keyCode), 1);
-    }
-    
-    function dispararEvento(){
-        for(var i in this.combinaciones){
-            var disparar = true;
-            for(var j in this.combinaciones[i]){
-                if(this.teclasApretadas.indexOf(j) === -1){
-                    disparar = false;
-                    break;
-                }
+function tocoTecla(evtKeyDown){
+    this.teclasApretadas.push(evtKeyDown.keyCode);
+    dispararEvento();
+}
+
+function levantoTecla(evtKeyDown){
+    this.teclasApretadas.splice(this.teclasApretadas.indexOf(evtKeyDown.keyCode), 1);
+}
+
+function dispararEvento(){
+    for(var i in this.combinaciones){
+        var disparar = true;
+        for(var j in this.combinaciones[i]){
+            if(this.teclasApretadas.indexOf(j) === -1){
+                disparar = false;
+                break;
             }
-            if(disparar)
-                this.callbacks[i].call(document);
         }
+        if(disparar)
+            this.callbacks[i].call(doc);
     }
-    
-    document = doc;
-    document.body.addEventListener("keydown", tocoTecla);
-    document.body.addEventListener("keyup", levantoTecla);
+}
+
+observerTeclado.prototype.adaptDocument = function (doc) {
+    doc.body.addEventListener("keydown", tocoTecla);
+    doc.body.addEventListener("keyup", levantoTecla);
 };
 
 observerTeclado.prototype.addCombo = function(keyCombo,callback) {

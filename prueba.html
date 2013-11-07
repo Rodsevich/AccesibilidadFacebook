@@ -30,13 +30,13 @@ and open the template in the editor.
             
             function leerAjoba(){
                 if(leibles.length != undefined)
-                    if(posicion_lectura >= 0 && posicion_lectura < leibles.length - 1)
+                    if(posicion_lectura < leibles.length - 1)
                         leer_leible(++posicion_lectura);
             }
             
             function leerArriba(){
                 if(leibles.length != undefined)
-                    if(posicion_lectura < leibles.length && posicion_lectura > 0)
+                    if(posicion_lectura > 0)
                         leer_leible(--posicion_lectura);
             }
             

@@ -17,11 +17,11 @@ NavegacionFeisbuc.prototype.setTargetURLs = function(){
     this.addTargetURL(/https:\/\/www.facebook.com\//);
 };
 
+function ando(){
+    alert("andó!");
+}
+
 NavegacionFeisbuc.prototype.initialize = function() {
-    
-    function ando(){
-        alert("andó!");
-    }
     
     var observer = new observerTeclado.observerTeclado("observer");
     
