@@ -12,13 +12,17 @@ function FacebookListSplitWrapper(){
 	this.languages["es"]["main"] = "Principal";
 	this.languages["es"]["menu"] = "Menu izquierdo";
 	this.languages["es"]["toolbar"] = "Herramientas";
-	this.languages["es"]["recomendaciones"] = "Cumpleaños y recomendaciones";
+	this.languages["es"]["recomendaciones"] = "Cumplea&ntilde;os y recomendaciones";
+
+	this.languages["es"]["buscar"] = "Buscar";
+	this.languages["es"]["mensages"] = "Mensages";
+
 };
 
 FacebookListSplitWrapper.prototype = new AbstractInstanceRefactoring();
 
 FacebookListSplitWrapper.prototype.setTargetURLs = function(){
-    this.addTargetURL(/https:\/\/www.facebook.com\//);
+    this.addTargetURL(/https:\/\/www.facebook.com\/$/); //el $ end of line
 };
 
 FacebookListSplitWrapper.prototype.initialize = function (language) {
@@ -39,11 +43,27 @@ FacebookListSplitWrapper.prototype.initialize = function (language) {
     var recomendacion = new SplitPage.SplitedSection(this.languages[language]["recomendaciones"], refactoring);
     recomendacion.addElement(".//*[@id='rightCol']");
 
+    var site = "https://www.facebook.com/";
+
+    /*var buscar = new SplitPage.StaticLink(this.languages[language]["buscar"], site + "search/results.php");
+
+    main.addRelatedSplitedSection(tools);
+    main.addStaticLink(buscar);*/
+    var buscar = new SplitPage.SplitedSection(this.languages[language]["buscar"], refactoring);
+    buscar.addElement(".//*[@id='u_0_2']");
+    main.addRelatedSplitedSection(buscar);
+
+    //link a los mensages
+    var mensages = new SplitPage.PureLink(this.languages[language]["mensages"], site + "messages");
+    main.addStaticLink(mensages);
 
     refactoring.addSplitedSection(main);
     refactoring.addSplitedSection(menu);
     refactoring.addSplitedSection(tools);
     refactoring.addSplitedSection(recomendacion);
+    refactoring.addSplitedSection(buscar);
+    //refactoring.addStaticLink(mensages);
+
 
     refactoring.setAsFirstSplitedSection();
 

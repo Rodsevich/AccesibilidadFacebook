@@ -444,3 +444,25 @@ StaticLink.prototype.renderAnchor = function(){
 	return " <a id='" + "undefined" + "'  href='"+ this.target_url +"' onclick='"+ onclick +"'>" + this.name + "</a> ";
 };
 var exportedObjects = {"GenericRefactoring":SplitPage,"SplitedSection":SplitedSection, "StaticLink":StaticLink};
+
+
+
+
+
+/*
+* PureLink
+*/
+
+function PureLink(name, target_url) {
+    //El nombre de la sección es imporante ya que sirve como 
+    this.name = name;
+    //La apliación que 
+    this.target_url = target_url;
+};
+
+PureLink.prototype.renderAnchor = function () {
+    //return " <a id='undefined'  href='" + this.target_url + "'>" + this.name + "</a> ";
+    var cod = "document.location.href=\""+ this.target_url + "\" ";
+    return "<a id='undefined' onclick='" + cod + "' >"+this.name+"</a>";
+};
+var exportedObjects = { "GenericRefactoring": SplitPage, "SplitedSection": SplitedSection, "PureLink": PureLink };

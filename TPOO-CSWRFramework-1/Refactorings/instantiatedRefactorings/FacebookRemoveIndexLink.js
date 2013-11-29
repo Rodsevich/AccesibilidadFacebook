@@ -11,7 +11,7 @@ function FacebookRemoveRedundantOperations(){
 FacebookRemoveRedundantOperations.prototype = new AbstractInstanceRefactoring();
 
 FacebookRemoveRedundantOperations.prototype.setTargetURLs = function(){
-	this.addTargetURL(/https:\/\/www.facebook.com\//);
+	this.addTargetURL(/https:\/\/www.facebook.com\/$/); //$ indica fin de la linea
 };
 
 FacebookRemoveRedundantOperations.prototype.initialize = function(language){
