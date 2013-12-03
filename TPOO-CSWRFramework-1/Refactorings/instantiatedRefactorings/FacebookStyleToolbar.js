@@ -18,13 +18,15 @@ FacebookStyleToolbar.prototype = new AbstractInstanceRefactoring();
 
 FacebookStyleToolbar.prototype.setTargetURLs = function(){
     this.addTargetURL(/https:\/\/www.facebook.com\//);
+    this.addTargetURL(/https:\/\/www.facebook.com\/messages/);
 };
 
 
 
 //override
 FacebookStyleToolbar.prototype.adaptDocument = function (doc) {
-    if (doc.body.getAttribute("class").indexOf("home") > -1) {
+    if (doc.body.getAttribute("class") == "hasLeftCol home composerExpanded fbx gecko win Locale_es_ES" ||
+        doc.body.getAttribute("class") == "_5262 _4rw fbx noFooter gecko win Locale_es_ES") {
         //esta en el muro de alguien logueado
         this.abstract_refactoring.adaptDocument(doc);
     }

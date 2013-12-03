@@ -36,6 +36,8 @@ HiddenImagenComentario.prototype.adaptDocument = function (doc) {
 HiddenImagenComentario.prototype.initialize = function (language) {
     this.abstract_refactoring = new HiddenRedundantOperationRefactoring.HiddenRedundantOperationRefactoring("Facebook page");
     //IMG
+
+    this.abstract_refactoring.addClassAborrar("._5pb8"); //quien hizo el estado
     this.abstract_refactoring.addClassAborrar(".actorPhoto.lfloat"); //quien hizo el estado
     this.abstract_refactoring.addClassAborrar(".substoryActorPic.lfloat"); //cuando aparece que alguien comento SU comentario
 

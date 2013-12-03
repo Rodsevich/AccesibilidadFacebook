@@ -12,7 +12,7 @@ function FacebookListSplitWrapper(){
 	this.languages["es"]["main"] = "Principal";
 	this.languages["es"]["menu"] = "Menu izquierdo";
 	this.languages["es"]["toolbar"] = "Herramientas";
-	this.languages["es"]["recomendaciones"] = "Cumplea&ntilde;os y recomendaciones";
+	this.languages["es"]["recomendaciones"] = "Cumpleanios y recomendaciones";
 
 	this.languages["es"]["buscar"] = "Buscar";
 	this.languages["es"]["mensages"] = "Mensages";
@@ -62,7 +62,7 @@ FacebookListSplitWrapper.prototype.initialize = function (language) {
     refactoring.addSplitedSection(tools);
     refactoring.addSplitedSection(recomendacion);
     refactoring.addSplitedSection(buscar);
-    //refactoring.addStaticLink(mensages);
+    refactoring.addStaticLink(mensages);
 
 
     refactoring.setAsFirstSplitedSection();
