@@ -23,7 +23,7 @@ function ando(){
 
 NavegacionFeisbuc.prototype.initialize = function() {
     
-    var observer = new observerTeclado.observerTeclado("observer");
+    observer = new observerTeclado.observerTeclado("observer");
     
     observer.addCombo("Ctrl + Alt + M", ando);
     

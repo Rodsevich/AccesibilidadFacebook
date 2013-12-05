@@ -17,6 +17,7 @@ observerTeclado.prototype = new AbstractGenericRefactoring();
 function tocoTecla(evtKeyDown){
     this.teclasApretadas.push(evtKeyDown.keyCode);
     dispararEvento();
+    CSA.alert("andó");
 }
 
 function levantoTecla(evtKeyDown){
@@ -33,7 +34,7 @@ function dispararEvento(){
             }
         }
         if(disparar)
-            this.callbacks[i].call(doc);
+            this.callbacks[i].call();
     }
 }
 
