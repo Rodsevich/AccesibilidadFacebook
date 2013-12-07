@@ -9,20 +9,42 @@ function getAccessibilityAugmenter(){
 
 
 function ando(){
-    this.body.setAttribute("style","background-color:black;color:green;");
+    alert(this); //document
+};
+
+function documento(){
+    alert(document);//[object XULDocument]
+};
+
+function windowo(){
+    alert(window);//[object ChromeWindow]
 };
 
 
 function leerAjoba(){
-    if(this.leibles.length != undefined)
-        if(posicion_lectura < leibles.length - 1)
-            leer_leible(++posicion_lectura);
+    this.leibles = this.getElementsByClassName("_5pax");
+    if(this.posicion_lectura == undefined) this.posicion_lectura = 0;
+        if(this.posicion_lectura < this.leibles.length - 1){
+//            leer_leible(++this.posicion_lectura);
+            var range = this.createRange();
+            var seleccion = this.getSelection();
+            range.selectNodeContents(this.leibles[++this.posicion_lectura]);
+            seleccion.removeAllRanges();
+            seleccion.addRange(range);
+        }
 }
 
 function leerArriba(){
-    if(this.leibles.length != undefined)
-        if(posicion_lectura > 0)
-            leer_leible(--posicion_lectura);
+    this.leibles = this.getElementsByClassName("_5pax");
+    if(this.posicion_lectura == undefined) this.posicion_lectura = 0;
+        if(this.posicion_lectura > 0){
+//            leer_leible(--this.posicion_lectura);
+            var range = this.createRange();
+            var seleccion = this.getSelection();
+            range.selectNodeContents(this.leibles[--this.posicion_lectura]);
+            seleccion.removeAllRanges();
+            seleccion.addRange(range);
+        }
 }
 
 function leer_leible(pos){
@@ -30,8 +52,8 @@ function leer_leible(pos){
 }
 
 function leer(elemento){
-    var range = document.createRange();
-    var seleccion = window.getSelection();
+    var range = this.createRange();
+    var seleccion = this.getSelection();
     range.selectNodeContents(elemento);
     seleccion.removeAllRanges();
     seleccion.addRange(range);
@@ -50,6 +72,8 @@ NavegacionFeisbuc.prototype.setTargetURLs = function(){
 NavegacionFeisbuc.prototype.initialize = function() {
     var observer = new KeyboardObserver.KeyboardObserver("observer");
     observer.addCombo("Ctrl + Alt + M", ando);
+    observer.addCombo("Ctrl + Alt + D", documento);
+    observer.addCombo("Ctrl + Alt + W", windowo);
     observer.addCombo("down", leerAjoba);
     observer.addCombo("up", leerArriba);
     this.abstract_refactoring = observer;
@@ -60,6 +84,5 @@ NavegacionFeisbuc.prototype.adaptDocument = function (doc) {
     if (doc.body.getAttribute("class").indexOf("home") > -1) {
         //esta en el muro de alguien logueado
         this.abstract_refactoring.adaptDocument(doc);
-        doc.leibles = document.getElementsByClassName("_5pax");
     }
 };

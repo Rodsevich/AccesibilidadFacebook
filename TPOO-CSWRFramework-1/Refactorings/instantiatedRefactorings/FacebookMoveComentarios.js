@@ -34,5 +34,5 @@ FacebookMoveComentarios.prototype.initialize = function (language) {
     var archive_operation = new DistributeMenu.DistributedOperation("Ver comentarios", refactoring);
     archive_operation.setAction(".//span[@class='uiStreamFooter']/span[@class='uiStreamSource']/a");
 
-    this.abstract_refactoring = refactoring
+    this.abstract_refactoring = refactoring;
 };
