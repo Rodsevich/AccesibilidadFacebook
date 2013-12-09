@@ -1,6 +1,6 @@
 var metadata = {"author":"Andres Valencia", 
                 "name":"SplitPage for message of Facebook", 
-                "description":"Split Facebook para la pagina de mensages",
+                "description":"Split Facebook para la pagina de mensajes",
                 "id":"splitPage-message-facebook-andres"};
 
 function getAccessibilityAugmenter(){
