@@ -15,7 +15,7 @@ function FacebookListSplitWrapper(){
 	this.languages["es"]["recomendaciones"] = "Cumpleanios y recomendaciones";
 
 	this.languages["es"]["buscar"] = "Buscar";
-	this.languages["es"]["mensajes"] = "Mensages";
+	this.languages["es"]["mensajes"] = "Mensajes";
 
 };
 
