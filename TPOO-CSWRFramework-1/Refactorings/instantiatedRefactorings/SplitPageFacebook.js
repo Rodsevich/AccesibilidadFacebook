@@ -15,7 +15,7 @@ function FacebookListSplitWrapper(){
 	this.languages["es"]["recomendaciones"] = "Cumpleanios y recomendaciones";
 
 	this.languages["es"]["buscar"] = "Buscar";
-	this.languages["es"]["mensages"] = "Mensages";
+	this.languages["es"]["mensajes"] = "Mensages";
 
 };
 
@@ -53,16 +53,16 @@ FacebookListSplitWrapper.prototype.initialize = function (language) {
     buscar.addElement(".//*[@id='u_0_2']");
     main.addRelatedSplitedSection(buscar);
 
-    //link a los mensages
-    var mensages = new SplitPage.PureLink(this.languages[language]["mensages"], site + "messages");
-    main.addStaticLink(mensages);
+    //link a los mensajes
+    var mensajes = new SplitPage.PureLink(this.languages[language]["mensajes"], site + "messages");
+    main.addStaticLink(mensajes);
 
     refactoring.addSplitedSection(main);
     refactoring.addSplitedSection(menu);
     refactoring.addSplitedSection(tools);
     refactoring.addSplitedSection(recomendacion);
     refactoring.addSplitedSection(buscar);
-    refactoring.addStaticLink(mensages);
+    refactoring.addStaticLink(mensajes);
 
 
     refactoring.setAsFirstSplitedSection();
