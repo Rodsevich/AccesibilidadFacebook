@@ -9,7 +9,7 @@ function getAccessibilityAugmenter(){
 
 function SplitPageMessageFacebook(){
 	this.languages = {"es":{},"en":{}};
-	this.languages["es"]["message"] = "Mensages";
+	this.languages["es"]["message"] = "Mensajes";
 	this.languages["es"]["toolbar"] = "Herramientas";
 	this.languages["es"]["recomendaciones"] = "Recomendaciones";
 
