@@ -1,0 +1,14 @@
+Instanciados
+
+SplitPageFacebook
+SplitPageFacebookRegister
+SplitPageMessageFacebook
+ChangeComentarioH5Facebook
+CrearPaginaTeclasAyudas
+FacebookAddDescriptionRegister
+FacebookRemoveIndexLink
+FacebookResume
+FacebookStyleToolbar
+HiddenImagenComentario
+HiddenImagenMensajes
+FacebookRemoveRegisterLogo
