@@ -13,9 +13,9 @@ function FacebookListSplitWrapper(){
 	this.languages["es"]["menu"] = "Menu izquierdo";
 	this.languages["es"]["toolbar"] = "Herramientas";
 	this.languages["es"]["recomendaciones"] = "Cumpleanios y recomendaciones";
-
 	this.languages["es"]["buscar"] = "Buscar";
 	this.languages["es"]["mensajes"] = "Mensajes";
+	this.languages["es"]["ayuda_atajos"] = "Ayuda con atajos";
 
 };
 
@@ -56,6 +56,9 @@ FacebookListSplitWrapper.prototype.initialize = function (language) {
     //link a los mensajes
     var mensajes = new SplitPage.PureLink(this.languages[language]["mensajes"], site + "messages");
     main.addStaticLink(mensajes);
+    
+    var ayuda_atajos = new SplitPage.PureLink(this.languages[language]["ayuda_atajos"], site + "comandos/ayuda/atajos");
+    main.addStaticLink(ayuda_atajos);
 
     refactoring.addSplitedSection(main);
     refactoring.addSplitedSection(menu);
@@ -63,7 +66,7 @@ FacebookListSplitWrapper.prototype.initialize = function (language) {
     refactoring.addSplitedSection(recomendacion);
     refactoring.addSplitedSection(buscar);
     refactoring.addStaticLink(mensajes);
-
+    refactoring.addStaticLink(ayuda_atajos);
 
     refactoring.setAsFirstSplitedSection();
 
