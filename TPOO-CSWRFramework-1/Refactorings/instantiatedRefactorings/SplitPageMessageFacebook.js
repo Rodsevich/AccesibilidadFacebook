@@ -1,6 +1,6 @@
 var metadata = {"author":"Andres Valencia", 
                 "name":"SplitPage for message of Facebook", 
-                "description":"Split Facebook para la pagina de mensages",
+                "description":"Split Facebook para la pagina de mensajes",
                 "id":"splitPage-message-facebook-andres"};
 
 function getAccessibilityAugmenter(){
@@ -9,7 +9,7 @@ function getAccessibilityAugmenter(){
 
 function SplitPageMessageFacebook(){
 	this.languages = {"es":{},"en":{}};
-	this.languages["es"]["message"] = "Mensages";
+	this.languages["es"]["message"] = "Mensajes";
 	this.languages["es"]["toolbar"] = "Herramientas";
 	this.languages["es"]["recomendaciones"] = "Recomendaciones";
 
