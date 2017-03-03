@@ -1,6 +1,6 @@
 var metadata = {"author":"Lisandro Ronconi", 
-                "name":"Hiden image for Facebook", 
-                "description":"Este refactorin oculta las imagenes de los comentarios",
+                "name":"Hiden image for Facebook en mensajes", 
+                "description":"Este refactorin oculta las imagenes de los comentarios de seccion mensajes",
                 "id": "HidenImageMensajes-facebook-licha"
             };
 
